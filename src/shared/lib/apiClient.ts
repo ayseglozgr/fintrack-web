@@ -31,8 +31,11 @@ apiClient.interceptors.response.use(
   (response) => response,
   async (error: AxiosError<ServiceResponse<unknown>>) => {
     const originalRequest = error.config as RetryableRequestConfig | undefined;
+    const isAuthEndpoint = originalRequest?.url?.includes("/auth/login") ||
+      originalRequest?.url?.includes("/auth/register") ||
+      originalRequest?.url?.includes("/auth/refresh-token");
 
-    if (error.response?.status !== 401 || !originalRequest || originalRequest._retry) {
+    if (error.response?.status !== 401 || !originalRequest || originalRequest._retry || isAuthEndpoint) {
       return Promise.reject(error);
     }
 

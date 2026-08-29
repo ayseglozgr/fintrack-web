@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (gerçek API URL/secret içerebilir, .env.example takip edilir)
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -35,37 +35,5 @@
   min-height: 100vh;
 }
 
-.auth-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 360px;
-}
-
-.auth-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  font-size: 0.9rem;
-}
-
-.auth-form input {
-  padding: 0.5rem 0.65rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font: inherit;
-}
-
-.form-error {
-  color: #d92d20;
-  font-size: 0.85rem;
-}
+/* Auth (login/register) page styles live in
+   src/features/auth/components/AuthLayout.css */

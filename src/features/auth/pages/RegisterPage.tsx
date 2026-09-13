@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
+import { AuthLayout } from "../components/AuthLayout";
 
 export function RegisterPage() {
   const { register } = useAuth();
@@ -28,67 +29,97 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="auth-page">
+    <AuthLayout
+      title="Hane Bütçenizi Yönetmeye Başlayın."
+      subtitle="Hane hesabınızı oluşturun, üyelerinizi davet edin ve bütçenizi birlikte takip edin."
+    >
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Kayıt Ol</h1>
-        <label>
-          Hesap adı
+        <div className="auth-form-header">
+          <h2>Hane Hesabı Oluştur</h2>
+          <p>Başlamak için birkaç bilgi girin.</p>
+        </div>
+
+        <div className="auth-input-group">
+          <span className="auth-input-icon" aria-hidden="true">
+            👤
+          </span>
           <input
+            placeholder="Hesap adı"
             value={accountName}
             onChange={(event) => setAccountName(event.target.value)}
             minLength={3}
             maxLength={50}
             required
+            aria-label="Hesap adı"
           />
-        </label>
-        <label>
-          Ad
+        </div>
+        <div className="auth-input-group">
+          <span className="auth-input-icon" aria-hidden="true">
+            👤
+          </span>
           <input
+            placeholder="Ad"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
             minLength={2}
             maxLength={100}
             required
+            aria-label="Ad"
           />
-        </label>
-        <label>
-          Soyad
+        </div>
+        <div className="auth-input-group">
+          <span className="auth-input-icon" aria-hidden="true">
+            👤
+          </span>
           <input
+            placeholder="Soyad"
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
             minLength={2}
             maxLength={100}
             required
+            aria-label="Soyad"
           />
-        </label>
-        <label>
-          E-posta
+        </div>
+        <div className="auth-input-group">
+          <span className="auth-input-icon" aria-hidden="true">
+            ✉
+          </span>
           <input
             type="email"
+            placeholder="E-posta"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
+            aria-label="E-posta"
           />
-        </label>
-        <label>
-          Şifre
+        </div>
+        <div className="auth-input-group">
+          <span className="auth-input-icon" aria-hidden="true">
+            🔒
+          </span>
           <input
             type="password"
+            placeholder="Şifre"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             minLength={8}
             maxLength={128}
             required
+            aria-label="Şifre"
           />
-        </label>
+        </div>
+
         {error && <p className="form-error">{error}</p>}
-        <button type="submit" disabled={isSubmitting}>
+
+        <button type="submit" className="auth-submit" disabled={isSubmitting}>
           {isSubmitting ? "Kayıt oluşturuluyor..." : "Kayıt Ol"}
         </button>
-        <p>
+
+        <p className="auth-form-footer">
           Zaten hesabın var mı? <Link to="/login">Giriş yap</Link>
         </p>
       </form>
-    </div>
+    </AuthLayout>
   );
 }
